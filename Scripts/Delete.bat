@@ -9,3 +9,4 @@ if exist "build" (
 )
 echo Suppression terminee.
 pause
+exit /b 0

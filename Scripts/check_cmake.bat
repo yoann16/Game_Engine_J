@@ -34,5 +34,6 @@ del temp_test.cmake
 echo.
 echo ========= CMAKE PRET A ETRE UTILISER =========
 pause
+exit /b 0
 
     

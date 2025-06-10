@@ -12,4 +12,5 @@ cmake --build .
 echo Build termine.
 cd ..
 pause 
+exit /b 0
 :: Fin du script de build
