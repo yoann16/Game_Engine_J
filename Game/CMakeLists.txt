@@ -1,0 +1,5 @@
+file(GLOB_RECURSE GAME_src CONFIGURE_DEPENDS "src/*.cpp")
+file(GLOB_RECURSE GAME_include CONFIGURE_DEPENDS "include/*.h")
+add_library(Game STATIC ${GAME_src} ${GAME_include})
+target_include_directories(Game PUBLIC "include")
+target_link_libraries(Game PUBLIC Game_Engine)
