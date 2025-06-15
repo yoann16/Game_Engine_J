@@ -14,7 +14,6 @@ if %errorlevel% neq 0 (
 echo Git trouver dans le PATH.
 echo.
 echo ========= GIT PRET A ETRE UTILISER =========
-pause
 exit /b 0
 
 
