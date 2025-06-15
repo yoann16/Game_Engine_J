@@ -1,5 +1,21 @@
 @echo off
 
+@REM echo === TEST SIMPLE ===
+@REM cmake --help >nul 2>&1
+@REM if %errorlevel% equ 0 (
+@REM     echo CMake fonctionne
+@REM ) else (
+@REM     echo Problème avec CMake
+@REM )
+
+@REM echo === GENERATEURS CMAKE DISPONIBLES ===
+@REM cmake --help | findstr "Visual Studio"
+@REM echo ==========================================
+
+@REM pause
+@REM exit /b 0
+
+
 echo ========= VERIFICATION DE VISUAL STUDIO =========
 echo.
 set VSWHERE_PATH="%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe"
@@ -28,8 +44,8 @@ if %errorlevel% neq 0 (
 )
 echo Visual Studio found in the PATH.
 echo Test compatible with cmake...
-echo cmake_minimum_required(VERSION %MIN_CMAKE_VERSION%) > temp_vs_test.cmake
-echo project(TestVS) >> temp_vs_test.cmake
+echo cmake_minimum_required(VERSION %MIN_CMAKE_VERSION%) > CMakeLists.txt
+echo project(TestVS) >> CMakeLists.txt
 echo Test avec Visual Studio 2022...
 cmake -S . -B temp_build_test -G "Visual Studio 17 2022" >nul 2>&1
 if %errorlevel% equ 0 (
@@ -44,12 +60,12 @@ if %errorlevel% equ 0 (
     ) else (
         echo Aucune version Visual Studio compatible trouvee.
         echo Il faut Visual Studio 2019 ou 2022 avec le workload C++.
-        del temp_vs_test.cmake
+        del CMakeLists.txt
         pause
         exit /b 1
     )
 )
-del temp_vs_test.cmake
+del CMakeLists.txt
 pause
 exit /b 0
 
